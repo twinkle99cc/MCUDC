@@ -10,17 +10,24 @@ body, html {
   color: white;
 }
 
-/* ===== 導覽列 ===== */
+/* ===== 導覽列（固定頂部）===== */
+
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* 依你需要調整 */
+  background-color: #222;
+  color: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 17px 30px;
-  background-color: #000;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 10000;
+  padding: 0 20px;
+  z-index: 9999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
+
+
 
 .logo {
   font-size: 24px;
@@ -29,7 +36,7 @@ body, html {
 
 /* 導覽列靠右 */
 .navbar nav {
-  margin-left: auto; /* ⬅️ 這行是讓 nav 靠右 */
+  margin-left: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -49,12 +56,10 @@ body, html {
   position: relative;
   cursor: pointer;
 }
-
 .dropdown > a {
   display: inline-block;
   user-select: none;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -69,7 +74,6 @@ body, html {
   padding: 5px 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
-
 .dropdown-content a {
   padding: 8px 15px;
   color: white;
@@ -77,12 +81,9 @@ body, html {
   font-size: 14px;
   white-space: nowrap;
 }
-
 .dropdown-content a:hover {
   background-color: #222;
 }
-
-/* 滑鼠滑過時展開 dropdown */
 .dropdown:hover .dropdown-content {
   display: flex;
   flex-direction: column;
@@ -96,7 +97,6 @@ body, html {
   gap: 5px;
   user-select: none;
 }
-
 .menu-toggle span {
   width: 25px;
   height: 3px;
@@ -120,11 +120,9 @@ body, html {
   overflow-y: auto;
   box-shadow: -4px 0 10px rgba(0,0,0,0.7);
 }
-
 .mobile-nav.show {
   display: flex;
 }
-
 .mobile-nav a {
   color: white;
   text-decoration: none;
@@ -134,7 +132,57 @@ body, html {
   user-select: none;
 }
 
-/* ===== 其餘區塊 ===== */
+/* ===== 主內容（加上 margin-top 避免被導覽列遮住） ===== */
+.hero {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  text-align: center;
+  background: url("../img/DSC_7313.jpg") no-repeat center top;
+  background-size: cover;
+  background-position: center -50px;
+  position: relative;
+  height: 100vh;
+  background-image: url("../img/DSC_7313.jpg");
+  background-size: cover;         /* 讓背景自動放大填滿區塊 */
+  background-position: center;    /* 圖片置中對齊 */
+  background-repeat: no-repeat;   /* 避免圖片重複 */
+}
+/* 將所有內容包進一個容器（例：.scale-wrapper） */
+.scale-wrapper {
+  width: 981px;
+  height: 737px;
+  transform-origin: top left;
+}
+
+/* 當畫面寬度 <= 375px 時，自動等比例縮放整個頁面 */
+@media screen and (max-width: 375px) {
+  .scale-wrapper {
+    transform: scale(0.382); /* 375 ÷ 981 ≈ 0.382 */
+  }
+}
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 20px;
+}
 
 /* 共用容器 */
 .container {
@@ -149,12 +197,10 @@ body, html {
   background-color: #f8f8f8;
   color: #111;
 }
-
 .about h2 {
   font-size: 36px;
   margin-bottom: 20px;
 }
-
 .about p {
   font-size: 18px;
   line-height: 1.8;
@@ -165,23 +211,21 @@ body, html {
   background-color: #000;
   color: white;
 }
-
 .locking-section h2 {
   font-size: 36px;
   margin-bottom: 20px;
 }
-
 .locking-section p {
   font-size: 18px;
   line-height: 1.8;
 }
+
 
 /* Locking 精選影片 */
 #video h2 {
   font-size: 32px;
   margin-bottom: 30px;
 }
-
 .video-row {
   display: flex;
   justify-content: center;
@@ -189,18 +233,165 @@ body, html {
   flex-wrap: wrap;
   margin-top: 40px;
 }
-
 .video-box {
   width: 45%;
   min-width: 300px;
   text-align: center;
 }
-
 .video-box h3 {
   font-size: 20px;
   margin-bottom: 12px;
   color: white;
 }
+
+/* Breaking 組介紹 */
+.breaking-section {
+  background-color: #000;
+  color: white;
+}
+.breaking-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.breaking-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Breaking 精選影片 */
+#breaking-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.breaking-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.breaking-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.breaking-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* Jazz 組介紹 */
+.Jazz-section {
+  background-color: #000;
+  color: white;
+}
+.Jazz-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.Jazz-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Jazz 精選影片 */
+#jazz-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.jazz-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.jazz-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.jazz-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* HipHop 組介紹 */
+.HipHop-section {
+  background-color: #000;
+  color: white;
+}
+.HipHop-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.HipHop-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* HipHop 精選影片 */
+#hiphop-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.hiphop-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.hiphop-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.hiphop-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* Popping 組介紹 */
+.Popping-section {
+  background-color: #000;
+  color: white;
+}
+.Popping-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.Popping-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Popping 精選影片 */
+#popping-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.popping-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.popping-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.popping-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
 
 /* 照片區 */
 .gallery {
@@ -209,33 +400,43 @@ body, html {
   background-color: #000;
   color: white;
 }
-
 .gallery h2 {
   font-size: 32px;
   margin-bottom: 30px;
 }
-
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
-
-/* Locking 區域固定三欄 */
 .locking-grid {
   grid-template-columns: repeat(3, 1fr);
 }
-
 .photo-grid img {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
-
 .photo-grid img:hover {
   transform: scale(1.05);
 }
+
+
+  .social-icons {
+    text-align: center; /* 水平置中 */
+    margin-top: 20px;   /* 可選：與上方內容保留距離 */
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin: 0 10px; /* 左右間距 */
+  }
+
+  .social-icons img {
+    vertical-align: middle;
+  }
+
 
 /* 頁尾 */
 footer {
@@ -246,73 +447,26 @@ footer {
   font-size: 14px;
 }
 
-/* hero 區塊 */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
-  text-align: center;
-  background: url("../img/DSC_7313.jpg") no-repeat center top;
-  background-size: cover;
-  background-position: center -50px;
-  position: relative;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-content h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 20px;
-}
-
 /* ===== 響應式設計 ===== */
 @media (max-width: 768px) {
-  /* 漢堡選單顯示 */
   .menu-toggle {
     display: flex;
   }
-
-  /* 桌面導覽列隱藏 */
   .navbar nav {
     display: none;
   }
-
-  /* 手機版選單文字大小調整 */
   .mobile-nav a {
     font-size: 18px;
   }
-
-  /* hero 文字大小調整 */
   .hero-content h1 {
     font-size: 32px;
   }
-
   .hero-content p {
     font-size: 16px;
   }
-
-  /* video-box 調整寬度 */
   .video-box {
     width: 100%;
   }
-
-  /* 調整 photo-grid 欄位 */
   .locking-grid {
     grid-template-columns: repeat(2, 1fr);
   }
