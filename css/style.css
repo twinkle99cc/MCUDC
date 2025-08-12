@@ -1,0 +1,483 @@
+/* ===== Reset ===== */
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #000;
+  color: white;
+}
+
+/* ===== 導覽列（固定頂部）===== */
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  padding: 10px 20px;
+  background-color: #222;
+  color: white;
+  border: none;
+}
+
+/* 手機選單樣式 */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background-color: #333;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.mobile-nav a {
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+}
+
+/* 顯示選單 */
+.mobile-nav.active {
+  display: flex;
+}
+
+/* 手機版顯示選單按鈕 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+
+
+/* RWD：小螢幕才顯示選單按鈕 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* 依你需要調整 */
+  background-color: #222;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 9999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* 導覽列靠右 */
+.navbar nav {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+.dropdown > a {
+  display: inline-block;
+  user-select: none;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  min-width: 150px;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  flex-direction: column;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 5px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+.dropdown-content a {
+  padding: 8px 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.dropdown-content a:hover {
+  background-color: #222;
+}
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 漢堡選單按鈕 */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  user-select: none;
+}
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+}
+
+
+
+/* ===== 主內容（加上 margin-top 避免被導覽列遮住） ===== */
+.hero {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  text-align: center;
+  background: url("../img/DSC_7313.jpg") no-repeat center top;
+  background-size: cover;
+  background-position: center -50px;
+  position: relative;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 20px;
+}
+
+/* 共用容器 */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+/* 關於我們 */
+.about {
+  background-color: #f8f8f8;
+  color: #111;
+}
+.about h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.about p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Locking 組介紹 */
+.locking-section {
+  background-color: #000;
+  color: white;
+}
+.locking-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.locking-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+
+/* Locking 精選影片 */
+#video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* Breaking 組介紹 */
+.breaking-section {
+  background-color: #000;
+  color: white;
+}
+.breaking-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.breaking-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Breaking 精選影片 */
+#breaking-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.breaking-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.breaking-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.breaking-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* Jazz 組介紹 */
+.Jazz-section {
+  background-color: #000;
+  color: white;
+}
+.Jazz-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.Jazz-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Jazz 精選影片 */
+#jazz-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.jazz-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.jazz-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.jazz-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* HipHop 組介紹 */
+.HipHop-section {
+  background-color: #000;
+  color: white;
+}
+.HipHop-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.HipHop-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* HipHop 精選影片 */
+#hiphop-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.hiphop-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.hiphop-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.hiphop-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* Popping 組介紹 */
+.Popping-section {
+  background-color: #000;
+  color: white;
+}
+.Popping-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.Popping-section p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Popping 精選影片 */
+#popping-video h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.popping-video-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.popping-video-box {
+  width: 45%;
+  min-width: 300px;
+  text-align: center;
+}
+.popping-video-box h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+
+/* 照片區 */
+.gallery {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #000;
+  color: white;
+}
+.gallery h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.locking-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.photo-grid img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+.photo-grid img:hover {
+  transform: scale(1.05);
+}
+
+
+  .social-icons {
+    text-align: center; /* 水平置中 */
+    margin-top: 20px;   /* 可選：與上方內容保留距離 */
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin: 0 10px; /* 左右間距 */
+  }
+
+  .social-icons img {
+    vertical-align: middle;
+  }
+
+
+/* 頁尾 */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #111;
+  color: #777;
+  font-size: 14px;
+}
+
+/* ===== 響應式設計 ===== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .navbar nav {
+    display: none;
+  }
+  .mobile-nav a {
+    font-size: 18px;
+  }
+  .hero-content h1 {
+    font-size: 32px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
+  .video-box {
+    width: 100%;
+  }
+  .locking-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .locking-grid {
+    grid-template-columns: 1fr;
+  }
+}
